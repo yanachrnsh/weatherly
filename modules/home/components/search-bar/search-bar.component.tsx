@@ -3,7 +3,7 @@ import { useEffect, useState, FC } from 'react';
 import { SearchBarInput } from './components/search-bar-input.component';
 import { SearchBarButton } from './components/search-bar-button.component';
 import { useGetWeather } from '../../../../api/search-bar/useGetWeather';
-import { CityGeoRequestDto } from '../../../../api/search-bar/dto/city.dto';
+import { CityGeoRequestDto } from '../../../../api/dto/city-geo.request.dto';
 import tw from 'twrnc';
 
 export const SearchBar: FC = () => {

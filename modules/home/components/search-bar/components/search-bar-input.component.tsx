@@ -2,7 +2,7 @@ import { View, TextInput } from 'react-native';
 import { FC } from 'react';
 import { useRouter } from 'expo-router';
 import tw from 'twrnc';
-import { CityGeoRequestDto } from '../../../../../api/search-bar/dto/city.dto';
+import { CityGeoRequestDto } from '../../../../../api/dto/city-geo.request.dto';
 import { COLORS } from '../../../../../styles/style.constants';
 
 interface ISearchBarInputProps {

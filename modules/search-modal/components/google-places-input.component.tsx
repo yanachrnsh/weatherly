@@ -1,11 +1,15 @@
-import React from 'react';
+import {FC} from 'react';
 import { GOOGLE_MAPS_API_KEY } from '@env';
-import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
-import { View } from 'react-native';
-import { useRouter } from 'expo-router';
+import { GooglePlaceData, GooglePlaceDetail, GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
+import { Alert, View } from 'react-native';
 
-export const GooglePlacesInput = () => {
-	const router = useRouter();
+
+interface GooglePlacesInputProps {
+	handleSearchPress:(data: GooglePlaceData, details: GooglePlaceDetail)=> void
+}
+
+export const GooglePlacesInput:FC<GooglePlacesInputProps> = ({handleSearchPress}) => {
+
 	return (
 		<View
 			style={{
@@ -17,11 +21,8 @@ export const GooglePlacesInput = () => {
 		>
 			<GooglePlacesAutocomplete
 				placeholder="Search"
-				onFail={error => console.error(error)}
-				onPress={(data, details = null) => {
-					console.log(data, details);
-					router.back();
-				}}
+				onFail={error => Alert.alert('Oops, something went wrong, please try again')}
+				onPress={(data, details = null) => handleSearchPress(data, details)}
 				fetchDetails={true}
 				query={{
 					key: `${GOOGLE_MAPS_API_KEY}`,

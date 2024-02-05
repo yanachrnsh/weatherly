@@ -1,15 +1,15 @@
 
 
-export interface CityDto {
-  geo : CityGeoRequestDto;
+export interface SearchedCity {
+  geo : SearchedCityGeo;
   favorite : boolean;
   name : string;
   id : string;
   creationDate : string;
 }
 
-export interface CityGeoRequestDto {
+interface SearchedCityGeo {
   lat: number;
   lon: number;
-}
 
+}
