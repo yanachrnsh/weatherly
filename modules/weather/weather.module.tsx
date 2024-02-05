@@ -1,17 +1,20 @@
-import { Text, View } from 'react-native';
+import { Text, View, ActivityIndicator } from 'react-native';
 import { useLocalSearchParams } from 'expo-router';
 import { useGetWeather } from '../../api/search-bar/useGetWeather';
 import { useEffect, useState } from 'react';
-import { WeatherResponseDto } from '../../api/dto/weather.response.dto';
+import { temperatureFormatter } from '../../utils/temperature-formatter';
+import tw from 'twrnc';
+import { WeatherInformation } from './components';
+import { COLORS } from '../../styles/style.constants';
+import { WeatherDescriptionItem } from './components/weather-description-item.component';
 
 type WeatherParams = {
 	latitude: string;
 	longitude: string;
-	city: string;
 };
 
 export const WeatherModule = () => {
-	const { latitude, longitude, city } = useLocalSearchParams<WeatherParams>();
+	const { latitude, longitude } = useLocalSearchParams<WeatherParams>();
 
 	const searchedGeoLocation = {
 		latitude: parseFloat(latitude),
@@ -45,11 +48,11 @@ export const WeatherModule = () => {
 				city: data.data.name,
 				weatherDescription: data.data.weather[0],
 				temperature: {
-					temp: data.data.main.temp,
-					feels_like: data.data.main.feels_like,
-					temp_min: data.data.main.temp_min,
-					temp_max: data.data.main.temp_max,
-					pressure: data.data.main.pressure,
+					temp: temperatureFormatter(data.data.main.temp),
+					feels_like: temperatureFormatter(data.data.main.feels_like),
+					temp_min: temperatureFormatter(data.data.main.temp_min),
+					temp_max: temperatureFormatter(data.data.main.temp_max),
+					pressure: temperatureFormatter(data.data.main.pressure),
 				},
 			};
 
@@ -57,16 +60,17 @@ export const WeatherModule = () => {
 		}
 	}, [data]);
 
+	console.log('weatherData', weatherData);
+
+	if (!data) {
+		<View style={tw`flex-1 items-center justify-center`}>
+			<ActivityIndicator size="large" color={COLORS.primary} />
+		</View>;
+	}
 
 	return (
-		<View>
-			<Text>{weatherData.city}</Text>
-      <Text>{weatherData.temperature.temp}</Text>
-      <View>
-        <Text>{weatherData.temperature.temp_min}</Text>
-        <Text>{weatherData.temperature.temp_max}</Text>
-      </View>
-			<Text>{weatherData.weatherDescription.description}</Text>
+		<View style={tw`flex-1`}>
+			<WeatherInformation weatherData={weatherData} />
 		</View>
 	);
 };

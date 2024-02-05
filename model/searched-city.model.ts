@@ -1,12 +1,12 @@
 export interface SearchedCity {
-	geo: SearchedCityGeo;
+	location: SearchedCityLocation;
 	favorite: boolean;
 	name: string;
 	id: string;
 	creationDate: string;
 }
 
-interface SearchedCityGeo {
+interface SearchedCityLocation {
 	latitude: number;
 	longitude: number;
 }

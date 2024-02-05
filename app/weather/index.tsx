@@ -4,7 +4,7 @@ import { WeatherModule } from '../../modules/weather/weather.module';
 
 export default function Weather() {
 	return (
-		<View>
+		<View style={{ flex: 1, padding: 10 }}>
 			<WeatherModule />
 		</View>
 	);

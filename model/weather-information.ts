@@ -13,7 +13,7 @@ interface WeatherDescription {
 
 interface WeatherTemperature {
 	temp: number;
-	feels_like:   number;
+	feels_like:   number; 
 	temp_min:   number;
 	temp_max:   number;
 	pressure:   number;
