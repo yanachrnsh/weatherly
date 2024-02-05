@@ -5,11 +5,12 @@ import { CityGeoRequestDto } from '../dto/city-geo.request.dto';
 import { WeatherResponseDto } from '../dto/weather.response.dto';
 
 const getWeather = async (cityGeo: CityGeoRequestDto) => {
-	const { lat, lon } = cityGeo;
+	const { latitude, longitude } = cityGeo;
+
 
 	try {
 		const response = await axios.get<WeatherResponseDto>(
-			`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}`,
+			`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${WEATHER_API_KEY}`,
 			{}
 		);
 
@@ -24,7 +25,7 @@ export const useGetWeather = (cityGeo: CityGeoRequestDto) => {
 	const query = useQuery({
 		queryKey: ['weather'],
 		queryFn: () => getWeather(cityGeo),
-		enabled: false,
+		// enabled: false,
 	});
 
 	return query;

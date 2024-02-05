@@ -2,23 +2,14 @@ import { View } from 'react-native';
 import { useEffect, useState, FC } from 'react';
 import { SearchBarInput } from './components/search-bar-input.component';
 import { SearchBarButton } from './components/search-bar-button.component';
-import { useGetWeather } from '../../../../api/search-bar/useGetWeather';
-import { CityGeoRequestDto } from '../../../../api/dto/city-geo.request.dto';
 import tw from 'twrnc';
 
 export const SearchBar: FC = () => {
-	const [searchedCity, setSearchedCity] = useState<CityGeoRequestDto>({ lat: 0, lon: 0 });
-
-	useEffect(() => {
-		console.log(searchedCity);
-	}, [searchedCity]);
-
-	const { data, refetch } = useGetWeather(searchedCity);
+	//TODO: add search functionality
+	const [searchedCity, setSearchedCity] = useState({});
 
 	const handleSearchPress = () => {
 		console.log('searchedCity', searchedCity);
-		refetch();
-		console.log(data);
 	};
 
 	return (
