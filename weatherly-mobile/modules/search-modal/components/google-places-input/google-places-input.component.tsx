@@ -2,7 +2,7 @@ import React from 'react';
 import { GOOGLE_MAPS_API_KEY } from '@env';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 
-export default function GooglePlacesInput() {
+export const GooglePlacesInput = () => {
 	return (
 		<GooglePlacesAutocomplete
 			placeholder="Search"
@@ -16,4 +16,4 @@ export default function GooglePlacesInput() {
 			}}
 		/>
 	);
-}
+};

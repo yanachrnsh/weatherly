@@ -1,6 +1,6 @@
 import { View, Text } from 'react-native';
 import React from 'react';
-import { GooglePlacesInput } from '../../modules/home/components/search-bottom-sheet/search-bottom-sheet.component';
+import { GooglePlacesInput } from '../../modules/search-modal/components/google-places-input/google-places-input.component';
 
 export default function SearchModal() {
 	return (

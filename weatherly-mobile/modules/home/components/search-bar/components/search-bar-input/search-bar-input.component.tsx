@@ -1,18 +1,25 @@
 import { View, TextInput } from 'react-native';
 import { FC } from 'react';
-import { styles } from './search-bar-input.style';
 import { useRouter } from 'expo-router';
+import tw from 'twrnc';
 import { CityGeoRequestDto } from '../../../../../../api/search-bar/dto/city-geo.request.dto';
+import { COLORS } from '../../../../../../styles/style.constants';
 
 interface ISearchBarInputProps {
-	setSearchedCity: (text:CityGeoRequestDto ) => void;
+	setSearchedCity: (text: CityGeoRequestDto) => void;
 }
 
 export const SearchBarInput: FC<ISearchBarInputProps> = ({ setSearchedCity }) => {
 	const router = useRouter();
 	return (
-		<View style={styles.searchWrapper}>
-			<TextInput style={styles.searchInput} placeholder="Chose the City" onPressIn={() => router.push('/search-modal')} />
+		<View style={tw`flex-3 rounded-xl bg-[${COLORS.gray}] h-13`}>
+			<TextInput
+				style={tw`flex-1 px-2.5 text-base`}
+				placeholder="Chose the City"
+				onPressIn={() => router.push('/search-modal')}
+				editable={false}
+				selectTextOnFocus={false}
+			/>
 		</View>
 	);
 };
