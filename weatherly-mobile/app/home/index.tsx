@@ -2,6 +2,7 @@ import { View, Text, ScrollView, TouchableOpacity, StyleSheet } from 'react-nati
 import React from 'react';
 import { COLORS, SIZES } from '../../styles/style.constants';
 import { HomeModule } from '../../modules/home/home.module';
+import { Link } from 'expo-router';
 
 export default function Home() {
 	return (
