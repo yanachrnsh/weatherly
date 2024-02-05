@@ -1,7 +1,7 @@
 import { View, Text, TouchableOpacity } from 'react-native';
 import React from 'react';
 import { MaterialIcons } from '@expo/vector-icons';
-import { COLORS } from '../../../../../../styles/style.constants';
+import { COLORS } from '../../../../../styles/style.constants';
 import tw from 'twrnc';
 
 export const SearchHistoryItem = ({ item }) => {

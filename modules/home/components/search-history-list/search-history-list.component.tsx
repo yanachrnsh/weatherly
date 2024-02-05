@@ -1,6 +1,6 @@
 import { View, Text, FlatList } from 'react-native';
 import React from 'react';
-import { SearchHistoryItem } from './components/search-history-item/search-history-item.component';
+import { SearchHistoryItem } from './components/search-history-item.component';
 import tw from 'twrnc';
 
 export const SearchHistoryList = () => {

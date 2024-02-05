@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import { WEATHER_API_KEY } from '@env';
-import { CityGeoRequestDto } from './dto/city-geo.request.dto';
+import { CityGeoRequestDto } from './dto/city.dto';
 import { WeatherResponseDto } from './dto/weather.response.dto';
 
 const getWeather = async (cityGeo: CityGeoRequestDto) => {

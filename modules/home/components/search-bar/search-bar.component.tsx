@@ -1,9 +1,9 @@
 import { View } from 'react-native';
 import { useEffect, useState, FC } from 'react';
-import { SearchBarInput } from './components/search-bar-input/search-bar-input.component';
-import { SearchBarButton } from './components/search-bar-button/search-bar-button.component';
+import { SearchBarInput } from './components/search-bar-input.component';
+import { SearchBarButton } from './components/search-bar-button.component';
 import { useGetWeather } from '../../../../api/search-bar/useGetWeather';
-import { CityGeoRequestDto } from '../../../../api/search-bar/dto/city-geo.request.dto';
+import { CityGeoRequestDto } from '../../../../api/search-bar/dto/city.dto';
 import tw from 'twrnc';
 
 export const SearchBar: FC = () => {
