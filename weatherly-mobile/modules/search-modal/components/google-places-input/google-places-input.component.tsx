@@ -1,19 +1,32 @@
 import React from 'react';
 import { GOOGLE_MAPS_API_KEY } from '@env';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
+import { View } from 'react-native';
+import { useRouter } from 'expo-router';
 
 export const GooglePlacesInput = () => {
+	const router = useRouter();
 	return (
-		<GooglePlacesAutocomplete
-			placeholder="Search"
-			onPress={(data, details = null) => {
-				// 'details' is provided when fetchDetails = true
-				console.log(data, details);
+		<View
+			style={{
+				margin: 12,
+				backgroundColor: 'transparent',
+				zIndex: 10,
+				height: 500,
 			}}
-			query={{
-				key: { GOOGLE_MAPS_API_KEY },
-				language: 'en',
-			}}
-		/>
+		>
+			<GooglePlacesAutocomplete
+				placeholder="Search"
+				onFail={error => console.error(error)}
+				onPress={(data, details = null) => {
+					console.log(data, details);
+					router.back();
+				}}
+				query={{
+					key: `${GOOGLE_MAPS_API_KEY}`,
+					language: 'en',
+				}}
+			/>
+		</View>
 	);
 };

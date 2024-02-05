@@ -1,4 +1,4 @@
-import { View, Image, TextInput, TouchableOpacity } from 'react-native';
+import { View } from 'react-native';
 import { useEffect, useState, FC } from 'react';
 import { SearchBarInput } from './components/search-bar-input/search-bar-input.component';
 import { SearchBarButton } from './components/search-bar-button/search-bar-button.component';
@@ -28,4 +28,3 @@ export const SearchBar: FC = () => {
 		</View>
 	);
 };
-

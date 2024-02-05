@@ -1,12 +1,11 @@
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 import React from 'react';
-import { GooglePlacesInput } from '../../modules/search-modal/components/google-places-input/google-places-input.component';
+import { SearchModalModule } from '../../modules/search-modal/search-modal.module';
 
 export default function SearchModal() {
 	return (
 		<View>
-			<Text>Search Modal</Text>
-			<GooglePlacesInput />
+			<SearchModalModule />
 		</View>
 	);
 }
