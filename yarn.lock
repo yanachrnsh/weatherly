@@ -10051,7 +10051,6 @@ __metadata:
     "@react-native-async-storage/async-storage": ^1.21.0
     "@tanstack/react-query": ^5.18.1
     "@types/react": ~18.2.45
-    add: ^2.0.6
     axios: ^1.6.7
     expo: ~50.0.5
     expo-constants: ^15.4.5

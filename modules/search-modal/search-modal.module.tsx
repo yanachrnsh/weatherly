@@ -7,10 +7,10 @@ import { useSearchHistory } from '../../context/search-history.provider';
 
 export const SearchModalModule = () => {
 	const router = useRouter();
-	const { setStoreData } = useSearchHistory();
+	const { setStoredHistory } = useSearchHistory();
 
 	const handleSearchPress = (data: GooglePlaceData, details: GooglePlaceDetail) => {
-		setStoreData(`${details.place_id}`, {
+		setStoredHistory(`${details.place_id}`, {
 			location: {
 				latitude: details.geometry.location.lat,
 				longitude: details.geometry.location.lng,

@@ -4,8 +4,10 @@ import { SearchedCity } from '../model/searched-city.model';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 interface SearchHistoryContextProps {
-	setStoreData: (id: string, value: SearchedCity) => void;
+	setStoredHistory: (id: string, value: SearchedCity) => void;
 	searchedHistory: SearchedCity[][];
+	updateStoredItem: (id: string, value: SearchedCity) => void;
+	updateStoredItems: (value: SearchedCity[]) => void;
 }
 
 const SearchHistoryContext = createContext<SearchHistoryContextProps>({} as SearchHistoryContextProps);
@@ -18,10 +20,10 @@ export const SearchHistoryProvider = ({ children }: SearchHistoryProviderProps) 
 	const [searchedHistory, setSearchedHistory] = useState<SearchedCity[][]>([]);
 
 	useEffect(() => {
-		getStoreData();
+		getStoredHistory();
 	}, []);
 
-	const getStoreData = async () => {
+	const getStoredHistory = async () => {
 		try {
 			const keys = await AsyncStorage.getAllKeys();
 			const storageJSON = await AsyncStorage.multiGet(keys);
@@ -33,21 +35,45 @@ export const SearchHistoryProvider = ({ children }: SearchHistoryProviderProps) 
 		}
 	};
 
-	const setStoreData = async (id: string, value: SearchedCity) => {
+	const setStoredHistory = async (id: string, value: SearchedCity) => {
 		try {
 			const jsonValue = JSON.stringify(value);
 			await AsyncStorage.setItem(id, jsonValue);
-			await getStoreData();
+			await getStoredHistory();
 			console.log('History saved');
 		} catch (e) {
 			Alert.alert('Error while saving history, please try again later');
 		}
 	};
 
+	const updateStoredItem = async (id: string, value: SearchedCity) => {
+		try {
+			const jsonValue = JSON.stringify(value);
+			await AsyncStorage.setItem(id, jsonValue);
+			await getStoredHistory();
+			console.log('History updated');
+		} catch (e) {
+			Alert.alert('Error while updating history, please try again later');
+		}
+	};
+
+	const updateStoredItems = async (value: SearchedCity[]) => {
+		try {
+			const keyValuesPairs: [string, string][] = value.map(item => [item.id, JSON.stringify(item)]);
+			await AsyncStorage.multiSet([...keyValuesPairs]);
+			await getStoredHistory();
+			console.log('History updated');
+		} catch (e) {
+			Alert.alert('Error while updating history, please try again later');
+		}
+	};
+
 	const memoValue = useMemo(() => {
 		return {
-			setStoreData,
+			setStoredHistory,
 			searchedHistory,
+			updateStoredItem,
+			updateStoredItems,
 		};
 	}, [searchedHistory]);
 

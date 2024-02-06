@@ -6,13 +6,36 @@ import { useSearchHistory } from '../../../../context/search-history.provider';
 import { SearchedCity } from '../../../../model/searched-city.model';
 
 export const SearchHistoryList = () => {
-	const { searchedHistory } = useSearchHistory();
-
+	const { searchedHistory, updateStoredItem, updateStoredItems } = useSearchHistory();
 	const [historyList, setHistory] = useState<SearchedCity[][]>([]);
+	const [currentFavorite, setCurrentFavorite] = useState<SearchedCity | null>(null);
 
 	useEffect(() => {
 		setHistory(searchedHistory);
+
+		if (searchedHistory.length > 0) {
+			const fav = searchedHistory.find(item => item[1].favorite === true);
+			setCurrentFavorite(fav ? fav[1] : null);
+		}
 	}, [searchedHistory]);
+
+	const handleFavoritePress = (favoriteCity: SearchedCity) => {
+		if (currentFavorite === null) {
+			setCurrentFavorite(favoriteCity);
+			updateStoredItem(favoriteCity.id, { ...favoriteCity, favorite: true });
+			return;
+		} else if (favoriteCity.id === currentFavorite.id) {
+			setCurrentFavorite(null);
+			updateStoredItem(favoriteCity.id, { ...favoriteCity, favorite: false });
+			return;
+		} else {
+			setCurrentFavorite(favoriteCity);
+			updateStoredItems([
+				{ ...favoriteCity, favorite: true },
+				{ ...currentFavorite, favorite: false },
+			]);
+		}
+	};
 
 	if (historyList.length === 0) {
 		return (
@@ -30,7 +53,7 @@ export const SearchHistoryList = () => {
 			</View>
 			<FlatList
 				data={historyList}
-				renderItem={({ item }) => <SearchHistoryItem searchedCity={item[1]} />}
+				renderItem={({ item }) => <SearchHistoryItem handleFavoritePress={handleFavoritePress} searchedCity={item[1]} />}
 				keyExtractor={item => item[1].id}
 			></FlatList>
 		</View>
