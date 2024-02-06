@@ -38,7 +38,7 @@ export const WeatherModule = () => {
 		},
 	};
 
-	const { data } = useGetWeather(searchedGeoLocation);
+	const { data, isLoading } = useGetWeather(searchedGeoLocation);
 
 	const [weatherData, setWeatherData] = useState<WeatherInformation>(defaultWeatherData);
 
@@ -62,7 +62,7 @@ export const WeatherModule = () => {
 
 	console.log('weatherData', weatherData);
 
-	if (!data) {
+	if (!data || isLoading) {
 		<View style={tw`flex-1 items-center justify-center`}>
 			<ActivityIndicator size="large" color={COLORS.primary} />
 		</View>;

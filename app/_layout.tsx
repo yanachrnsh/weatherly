@@ -1,6 +1,7 @@
-import { Stack, useRouter } from 'expo-router';
+import { Stack } from 'expo-router';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { SearchHistoryProvider } from '../context/search-history.provider';
 
 const queryClient = new QueryClient();
 
@@ -13,12 +14,19 @@ const RootLayout = () => {
 	return (
 		<GestureHandlerRootView style={{ flex: 1 }}>
 			<QueryClientProvider client={queryClient}>
-				<Stack>
-					<Stack.Screen name="city-weather/index" options={{ headerShown: false }} />
-					<Stack.Screen name="index" options={{ headerTitle: 'Weatherly' }} />
-					<Stack.Screen name="search-modal/index" options={{ headerShown: false, presentation: 'modal' }} />
-					<Stack.Screen name="weather/index" options={{ headerTitle: 'Weather' }} />
-				</Stack>
+				<SearchHistoryProvider>
+					<Stack>
+						<Stack.Screen name="index" options={{ headerTitle: 'Weatherly' }} />
+						<Stack.Screen name="search-modal/index" options={{ headerShown: false, presentation: 'modal' }} />
+						<Stack.Screen
+							name="weather/index"
+							options={{
+								headerTitle: 'Weather',
+								headerBackTitle: 'Back',
+							}}
+						/>
+					</Stack>
+				</SearchHistoryProvider>
 			</QueryClientProvider>
 		</GestureHandlerRootView>
 	);

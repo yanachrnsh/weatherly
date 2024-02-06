@@ -29,7 +29,8 @@
 		"react-native-screens": "^3.29.0",
 		"react-native-web": "^0.19.10",
 		"twrnc": "^3.6.8",
-		"typescript": "^5.3.0"
+		"typescript": "^5.3.0",
+		"yarn": "^1.22.21"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.20.0",

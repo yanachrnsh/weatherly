@@ -11,7 +11,6 @@ export const SearchBar: FC = () => {
 	const router = useRouter();
 
 	const handleSearchPress = () => {
-		console.log('searchedCity', searchedCity);
 		router.navigate('weather');
 	};
 
