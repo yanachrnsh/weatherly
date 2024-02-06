@@ -22,7 +22,7 @@ export const GooglePlacesInput:FC<GooglePlacesInputProps> = ({handleSearchPress}
 			<GooglePlacesAutocomplete
 				placeholder="Search"
 				onFail={error => Alert.alert('Oops, something went wrong, please try again')}
-				onPress={(data, details = null) => handleSearchPress(data, details)}
+				onPress={(data, details = null) => handleSearchPress(data, details!)}
 				fetchDetails={true}
 				query={{
 					key: `${GOOGLE_MAPS_API_KEY}`,

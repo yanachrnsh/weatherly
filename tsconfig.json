@@ -1,6 +1,6 @@
 {
 	"compilerOptions": {
-		// "strict": true,
+		"strict": true,
 		"baseUrl": ".",
 		"paths": {
 			"@app/*": ["app/*"],
@@ -10,7 +10,7 @@
 			"@context/*": ["context/*"],
 			"@constants/*": ["constants/*"],
 			"@model/*": ["model/*"],
-      "@api/*": ["api/*"],
+			"@api/*": ["api/*"],
 		},
 	},
 	"extends": "expo/tsconfig.base",

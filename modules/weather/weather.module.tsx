@@ -1,11 +1,12 @@
 import { Text, View, ActivityIndicator } from 'react-native';
-import { useLocalSearchParams } from 'expo-router';
+import { router, useLocalSearchParams } from 'expo-router';
 import { useGetWeather } from '@api/search-bar/useGetWeather';
 import { useEffect, useState } from 'react';
 import { temperatureFormatter } from '@utils/temperature-formatter';
 import tw from 'twrnc';
 import { WeatherInformation } from '@modules/weather/components';
 import { COLORS } from '@constants/style.constants';
+import { UnfilledWeather } from './components/unfilled-weather.component';
 
 type WeatherParams = {
 	latitude: string;
@@ -14,6 +15,10 @@ type WeatherParams = {
 
 export const WeatherModule = () => {
 	const { latitude, longitude } = useLocalSearchParams<WeatherParams>();
+
+	if (!latitude || !longitude) {
+		return <UnfilledWeather />;
+	}
 
 	const searchedGeoLocation = {
 		latitude: parseFloat(latitude),

@@ -26,8 +26,14 @@ export const SearchHistoryProvider = ({ children }: SearchHistoryProviderProps) 
 	const getStoredHistory = async () => {
 		try {
 			const keys = await AsyncStorage.getAllKeys();
+
+			if (keys.length === 0) {
+				setSearchedHistory([]);
+				return;
+			}
 			const storageJSON = await AsyncStorage.multiGet(keys);
-			const searchHistory: SearchedCity[][] = storageJSON.map(item => [item[0], JSON.parse(item[1])]);
+
+			const searchHistory: SearchedCity[][] = storageJSON.map(item => [item[0], JSON.parse(item[1] ? (item[1] as string) : '')]);
 			setSearchedHistory(searchHistory);
 			console.log('History loaded');
 		} catch (e) {
