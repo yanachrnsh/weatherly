@@ -1,6 +1,6 @@
 import { View, Text, Alert } from 'react-native';
 import { createContext, useContext, useMemo, useState, ReactNode, useEffect } from 'react';
-import { SearchedCity } from '../model/searched-city.model';
+import { SearchedCity } from '@model/searched-city.model';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 interface SearchHistoryContextProps {

@@ -3,7 +3,7 @@ import { GooglePlacesInput } from './components';
 import tw from 'twrnc';
 import { useRouter } from 'expo-router';
 import { GooglePlaceData, GooglePlaceDetail } from 'react-native-google-places-autocomplete';
-import { useSearchHistory } from '../../context/search-history.provider';
+import { useSearchHistory } from '@context/search-history.provider';
 
 export const SearchModalModule = () => {
 	const router = useRouter();

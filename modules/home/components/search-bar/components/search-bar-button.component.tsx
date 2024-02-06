@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { View, TouchableOpacity } from 'react-native';
 import { EvilIcons } from '@expo/vector-icons';
 import tw from 'twrnc';
-import { COLORS } from '../../../../../styles/style.constants';
+import { COLORS } from '@constants/style.constants';
 
 interface ISearchBarButtonProps {
 	handlePress: () => void;

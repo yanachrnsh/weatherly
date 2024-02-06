@@ -2,8 +2,8 @@ import { View, Text, FlatList } from 'react-native';
 import { SearchHistoryItem } from './components/search-history-item.component';
 import tw from 'twrnc';
 import { useEffect, useState } from 'react';
-import { useSearchHistory } from '../../../../context/search-history.provider';
-import { SearchedCity } from '../../../../model/searched-city.model';
+import { useSearchHistory } from '@context/search-history.provider';
+import { SearchedCity } from '@model/searched-city.model';
 
 export const SearchHistoryList = () => {
 	const { searchedHistory, updateStoredItem, updateStoredItems } = useSearchHistory();

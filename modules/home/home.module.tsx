@@ -1,5 +1,5 @@
 
-import { SearchHistoryList, SearchBar } from './components';
+import { SearchHistoryList, SearchBar } from '@modules/home/components';
 
 
 export const HomeModule = () => {
