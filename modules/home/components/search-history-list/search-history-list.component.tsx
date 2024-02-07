@@ -13,7 +13,7 @@ export const SearchHistoryList = () => {
 	useEffect(() => {
 		setHistory(searchedHistory);
 
-		if (searchedHistory.length > 0) {
+		if (searchedHistory && searchedHistory.length > 0) {
 			const fav = searchedHistory.find(item => item[1].favorite === true);
 			setCurrentFavorite(fav ? fav[1] : null);
 		}
@@ -37,7 +37,7 @@ export const SearchHistoryList = () => {
 		}
 	};
 
-	if (historyList.length === 0) {
+	if (!historyList || historyList.length === 0) {
 		return (
 			<View style={tw`flex-1 mt-3 gap-2 justify-center items-center`}>
 				<Text style={tw`font-bold`}>No search history</Text>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { COLORS } from '@constants/style.constants';
 import { HomeModule } from '@modules/home/home.module';
-import { View } from 'react-native';
+import { View, Text } from 'react-native';
 
 export default function App() {
 	return (

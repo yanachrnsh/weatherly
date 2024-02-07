@@ -9,7 +9,7 @@ export const SearchModalModule = () => {
 	const router = useRouter();
 	const { setStoredHistory } = useSearchHistory();
 
-	const handleSearchPress = (data: GooglePlaceData, details: GooglePlaceDetail) => {
+	const handleSearchPress = ( details: GooglePlaceDetail) => {
 		setStoredHistory(`${details.place_id}`, {
 			location: {
 				latitude: details.geometry.location.lat,
@@ -31,7 +31,7 @@ export const SearchModalModule = () => {
 		});
 	};
 	return (
-		<View style={tw``}>
+		<View >
 			<GooglePlacesInput handleSearchPress={handleSearchPress} />
 		</View>
 	);
