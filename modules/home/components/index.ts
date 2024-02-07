@@ -1,4 +1,4 @@
 import { SearchBar } from './search-bar/search-bar.component';
-import { SearchHistoryList } from './search-history-list/search-history-list.component';
+import { SearchHistory } from './searched-history/searched-history.component';
 
-export { SearchBar, SearchHistoryList };
+export { SearchBar, SearchHistory };

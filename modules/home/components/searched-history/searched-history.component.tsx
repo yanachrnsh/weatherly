@@ -4,8 +4,9 @@ import tw from 'twrnc';
 import { useEffect, useState } from 'react';
 import { useSearchHistory } from '@context/search-history.provider';
 import { SearchedCity } from '@model/searched-city.model';
+import { SearchedHistoryList } from './components/searched-history-list.component';
 
-export const SearchHistoryList = () => {
+export const SearchHistory = () => {
 	const { searchedHistory, updateStoredItem, updateStoredItems } = useSearchHistory();
 	const [historyList, setHistory] = useState<SearchedCity[][]>([]);
 	const [currentFavorite, setCurrentFavorite] = useState<SearchedCity | null>(null);
@@ -37,25 +38,13 @@ export const SearchHistoryList = () => {
 		}
 	};
 
-	if (!historyList || historyList.length === 0) {
-		return (
-			<View style={tw`flex-1 mt-3 gap-2 justify-center items-center`}>
-				<Text style={tw`font-bold`}>No search history</Text>
-			</View>
-		);
-	}
-
 	return (
-		<View style={tw`flex-1 mt-3 gap-2 justify-center items-center`}>
-			<View style={tw`pt-3 flex-row`}>
-				<Text style={tw`font-bold flex-3 px-2.5`}>Search History</Text>
-				<Text style={tw`font-bold flex-1 px-2.5 text-center`}>Favorite</Text>
-			</View>
-			<FlatList
-				data={historyList}
-				renderItem={({ item }) => <SearchHistoryItem handleFavoritePress={handleFavoritePress} searchedCity={item[1]} />}
-				keyExtractor={item => item[1].id}
-			></FlatList>
+		<View style={tw`flex-1 mt-3 gap-2 justify-center items-center`} testID="search-history-list">
+			{!historyList || historyList.length === 0 ? (
+				<Text style={tw`font-bold`}>No search history</Text>
+			) : (
+				<SearchedHistoryList historyList={historyList} handleFavoritePress={handleFavoritePress} />
+			)}
 		</View>
 	);
 };

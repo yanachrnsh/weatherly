@@ -31,7 +31,7 @@ export const SearchBar: FC = () => {
 	};
 
 	return (
-		<View style={tw`flex-row justify-between items-center mt-3 gap-2`}>
+		<View style={tw`flex-row justify-between items-center mt-3 gap-2`} testID='search-bar'>
 			<SearchBarInput prepopulatedSearchedValue={prepopulatedSearchedValue} />
 			<SearchBarButton handlePress={handleSearchPress} />
 		</View>
