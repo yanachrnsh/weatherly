@@ -30,9 +30,16 @@ export const SearchBar: FC = () => {
 		});
 	};
 
+	const handleInputPress = () => {
+		router.push('/search-modal');
+	};
+
 	return (
-		<View style={tw`flex-row justify-between items-center mt-3 gap-2`} testID='search-bar'>
-			<SearchBarInput prepopulatedSearchedValue={prepopulatedSearchedValue} />
+		<View style={tw`flex-row justify-between items-center mt-3 gap-2`} testID="search-bar">
+			<SearchBarInput
+				prepopulatedSearchedValue={prepopulatedSearchedValue ? prepopulatedSearchedValue.name : null}
+				handlePress={handleInputPress}
+			/>
 			<SearchBarButton handlePress={handleSearchPress} />
 		</View>
 	);
