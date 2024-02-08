@@ -5,7 +5,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 interface SearchHistoryContextProps {
 	setStoredHistory: (id: string, value: SearchedCity) => void;
-	searchedHistory: SearchedCity[][];
+	searchedHistory: SearchedCity[];
 	updateStoredItem: (id: string, value: SearchedCity) => void;
 	updateStoredItems: (value: SearchedCity[]) => void;
 }
@@ -15,9 +15,10 @@ const SearchHistoryContext = createContext<SearchHistoryContextProps>({} as Sear
 interface SearchHistoryProviderProps {
 	children: ReactNode;
 }
+type SearchedHistoryStorage = [string, SearchedCity];
 
 export const SearchHistoryProvider = ({ children }: SearchHistoryProviderProps) => {
-	const [searchedHistory, setSearchedHistory] = useState<SearchedCity[][]>([]);
+	const [searchedHistory, setSearchedHistory] = useState<SearchedCity[]>([]);
 
 	useEffect(() => {
 		getStoredHistory();
@@ -33,7 +34,8 @@ export const SearchHistoryProvider = ({ children }: SearchHistoryProviderProps) 
 			}
 			const storageJSON = await AsyncStorage.multiGet(keys);
 
-			const searchedHistory: SearchedCity[][] = storageJSON.map(item => [item[0], JSON.parse(item[1] ? (item[1] as string) : '')]);
+			const searchedHistory: SearchedCity[] = storageJSON.map(item => JSON.parse(item[1]!));
+
 			setSearchedHistory(searchedHistory);
 			console.log('History loaded');
 		} catch (e) {

@@ -2,7 +2,7 @@ import { Text, View, ActivityIndicator } from 'react-native';
 import { router, useLocalSearchParams } from 'expo-router';
 import { useGetWeather } from '@api/search-bar/useGetWeather';
 import { useEffect, useState } from 'react';
-import { temperatureFormatter } from '@utils/temperature-formatter';
+import { temperatureFormatter } from '@utils/temperatureFormatter';
 import tw from 'twrnc';
 import { WeatherInformation } from '@modules/weather/components';
 import { COLORS } from '@constants/style.constants';

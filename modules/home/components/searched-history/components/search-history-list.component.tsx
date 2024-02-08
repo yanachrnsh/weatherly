@@ -6,7 +6,7 @@ import { FC } from 'react';
 import tw from 'twrnc';
 
 interface SearchHistoryItemProps {
-	historyList: SearchedCity[][];
+	historyList: SearchedCity[];
 	handleFavoritePress: (favorite: SearchedCity) => void;
 }
 
@@ -19,8 +19,8 @@ export const SearchedHistoryList: FC<SearchHistoryItemProps> = ({ historyList, h
 			</View>
 			<FlatList
 				data={historyList}
-				renderItem={({ item }) => <SearchHistoryItem handleFavoritePress={handleFavoritePress} searchedCity={item[1]} />}
-				keyExtractor={item => item[1].id}
+				renderItem={({ item }) => <SearchHistoryItem handleFavoritePress={handleFavoritePress} searchedCity={item} />}
+				keyExtractor={item => item.id}
 			></FlatList>
 		</>
 	);

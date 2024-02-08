@@ -6,6 +6,7 @@ import tw from 'twrnc';
 import { useRouter } from 'expo-router';
 import { useSearchHistory } from '@context/search-history.provider';
 import { SearchedCity } from '@model/searched-city.model';
+import { findFavorite } from '@utils/findFavorite';
 
 export const SearchBar: FC = () => {
 	const [prepopulatedSearchedValue, setPrepopulatedSearchedValue] = useState<SearchedCity | null>(null);
@@ -14,10 +15,8 @@ export const SearchBar: FC = () => {
 	const { searchedHistory } = useSearchHistory();
 
 	useEffect(() => {
-		if (searchedHistory && searchedHistory.length > 0) {
-			const fav = searchedHistory.find(item => item[1].favorite === true);
-			setPrepopulatedSearchedValue(fav ? fav[1] : null);
-		}
+		const favorite = findFavorite(searchedHistory);
+		setPrepopulatedSearchedValue(favorite);
 	}, [searchedHistory]);
 
 	const handleSearchPress = () => {
