@@ -42,7 +42,7 @@ export const WeatherModule = () => {
 			pressure: 0,
 			visibility: 0,
 			wind: { speed: 0, deg: 0, gust: 0 },
-			rain: { '1h': 0 },
+			humidity: 0,
 		},
 		temperature: {
 			temp: 0,
@@ -64,7 +64,7 @@ export const WeatherModule = () => {
 					...weatherResponse.data.weather[0],
 					visibility: weatherResponse.data.visibility,
 					wind: weatherResponse.data.wind,
-					rain: weatherResponse.data.rain,
+					humidity: weatherResponse.data.main.humidity,
 					pressure: weatherResponse.data.main.pressure,
 				},
 				temperature: {
@@ -77,7 +77,6 @@ export const WeatherModule = () => {
 			setWeatherData(weatherData);
 		}
 	}, [weatherResponse]);
-
 
 	return (
 		<LinearGradient

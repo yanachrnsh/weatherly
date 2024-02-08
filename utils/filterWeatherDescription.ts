@@ -5,7 +5,7 @@ export const filterWeatherDescription = (weatherDescription: WeatherDescription)
 		const key = item[0].toUpperCase();
 		return (
 			key === WeatherDescriptionEnum.WIND ||
-			key === WeatherDescriptionEnum.RAIN ||
+			key === WeatherDescriptionEnum.HUMIDITY ||
 			key === WeatherDescriptionEnum.VISIBILITY ||
 			key === WeatherDescriptionEnum.PRESSURE
 		);

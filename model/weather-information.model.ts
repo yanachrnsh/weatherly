@@ -14,12 +14,12 @@ export interface WeatherDescription {
 	pressure: number;
 	visibility: number;
 	wind: Wind;
-	rain: Rain;
+	humidity: number;
 }
 
 export enum WeatherDescriptionEnum {
 	WIND = 'WIND',
-	RAIN = 'RAIN',
+	HUMIDITY = 'HUMIDITY',
 	VISIBILITY = 'VISIBILITY',
 	PRESSURE = 'PRESSURE',
 }
