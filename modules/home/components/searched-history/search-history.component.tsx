@@ -6,7 +6,7 @@ import { SearchedHistoryList } from './components/search-history-list.component'
 
 interface SearchHistoryProps {
 	handleIconPress: (selectedCity: SearchedCity) => void;
-	searchedHistory: SearchedCity[];
+	searchedHistory: SearchedCity[] | null;
 	currentFavorite: SearchedCity | null;
 }
 

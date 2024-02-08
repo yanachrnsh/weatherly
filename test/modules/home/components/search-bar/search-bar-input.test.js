@@ -11,13 +11,15 @@ describe('Search Bar Input', () => {
 		render(<SearchBarInput prepopulatedSearchedValue={prepopulatedSearchedValue} />);
 
 		const input = screen.getByTestId('search-bar-input');
-		expect(input.props.value).toBe('');
+		// expect(input.props.value).toBe('');
+		expect(input).toHaveTextContent('');
 	});
 
 	it('if prepopulatedSearchedValue is exist, the input value should be the prepopulatedSearchedValue', () => {
 		const prepopulatedSearchedValue = 'Text value';
 		render(<SearchBarInput prepopulatedSearchedValue={prepopulatedSearchedValue} />);
 		const input = screen.getByTestId('search-bar-input');
-		expect(input.props.value).toBe(prepopulatedSearchedValue);
+		// expect(input.props.value).toBe(prepopulatedSearchedValue);
+		expect(input).toHaveTextContent(prepopulatedSearchedValue);
 	});
 });

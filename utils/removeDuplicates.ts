@@ -7,7 +7,7 @@ export const removeDuplicates = (searchedHistory: SearchedCity[]) => {
 		if (!result.has(item.name)) {
 			result.set(item.name, item);
 		} else {
-			if (item.creationDate > result.get(item.name).creationDate) {
+			if (item.creationDate >= result.get(item.name).creationDate) {
 				result.set(item.name, item);
 			}
 		}

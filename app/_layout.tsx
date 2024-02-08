@@ -14,7 +14,7 @@ const RootLayout = () => {
 				<SearchHistoryProvider>
 					<Stack>
 						<Stack.Screen name="index" options={{ headerTitle: 'Pick location', headerShown: false }} />
-						<Stack.Screen name="search-modal/index" options={{ headerShown: false, presentation: 'modal' }} />
+						<Stack.Screen name="search-modal/index" options={{ headerTitle: 'Pick location', presentation: 'modal' }} />
 						<Stack.Screen
 							name="weather/index"
 							options={{

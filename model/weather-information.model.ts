@@ -30,3 +30,6 @@ interface WeatherTemperature {
 	temp_min: number;
 	temp_max: number;
 }
+
+export type FilteredWeatherDescription = [string, FilteredWeatherDescriptionValue];
+export type FilteredWeatherDescriptionValue = number | Wind;

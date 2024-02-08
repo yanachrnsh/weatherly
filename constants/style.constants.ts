@@ -5,7 +5,7 @@ export const COLORS = {
 	tertiary: '#7209B7',
 
 	gray: '#f2f2f2',
-	graySecondary: '#ECECEC',
+	graySecondary: '#C7C7C7',
 
 	primaryBackGround: "#D46FCA",
 

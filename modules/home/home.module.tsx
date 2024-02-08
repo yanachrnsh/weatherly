@@ -50,6 +50,9 @@ export const HomeModule = () => {
 	};
 
 	const sortHistory = (history: SearchedCity[]) => {
+
+		if(!history || history.length === 0) return null;
+
 		const historyWithoutDup = removeDuplicates(history);
 		return sortByDateDesc(historyWithoutDup);
 	};
