@@ -1,21 +1,18 @@
 import { FC } from 'react';
-import { View, Text, Image, ImageURISource } from 'react-native';
+import { View, Text } from 'react-native';
 import tw from 'twrnc';
+import { firstLetterToUpperCase } from '@utils/firstLetterToUpperCase';
 
 interface WeatherDescriptionItemProps {
-	icon: ImageURISource;
 	title: string;
-	value: string;
+	text: string;
 }
 
-export const WeatherDescriptionItem: FC<WeatherDescriptionItemProps> = ({ icon, title, value }) => {
+export const WeatherDescriptionItem: FC<WeatherDescriptionItemProps> = ({ title, text }) => {
 	return (
-		<View style={tw`bg-red-500`}>
-			<View>
-				<Image source={icon} />
-				<Text>{title}</Text>
-			</View>
-			<Text>{value}</Text>
+		<View style={tw`h-20  w-[45%] max-w-[200px] justify-start gap-2 py-2`}>
+			<Text>{firstLetterToUpperCase(title)}</Text>
+			<Text>{text}</Text>
 		</View>
 	);
 };

@@ -5674,6 +5674,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"expo-linear-gradient@npm:^12.7.1":
+  version: 12.7.1
+  resolution: "expo-linear-gradient@npm:12.7.1"
+  peerDependencies:
+    expo: "*"
+  checksum: a79d6ba60f64827e4cab40d3e2977897361c3bb376ae923bec459c739f5a234746da417a3fe259a55c7e29e27fb2bea5a07024339f85a06e52f12e8f6564a34e
+  languageName: node
+  linkType: hard
+
 "expo-linking@npm:^6.2.2":
   version: 6.2.2
   resolution: "expo-linking@npm:6.2.2"
@@ -11700,6 +11709,7 @@ __metadata:
     axios: ^1.6.7
     expo: ~50.0.5
     expo-constants: ^15.4.5
+    expo-linear-gradient: ^12.7.1
     expo-linking: ^6.2.2
     expo-router: ^3.4.6
     expo-status-bar: ^1.11.1

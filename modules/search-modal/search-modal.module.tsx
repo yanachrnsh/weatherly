@@ -1,9 +1,10 @@
 import { View } from 'react-native';
-import { GooglePlacesInput } from './components';
+import { GooglePlacesInput } from './components/google-places-input.component';
 import tw from 'twrnc';
 import { useRouter } from 'expo-router';
 import { GooglePlaceData, GooglePlaceDetail } from 'react-native-google-places-autocomplete';
 import { useSearchHistory } from '@context/search-history.provider';
+import { LinearGradient } from 'expo-linear-gradient';
 
 export const SearchModalModule = () => {
 	const router = useRouter();
@@ -31,8 +32,8 @@ export const SearchModalModule = () => {
 		});
 	};
 	return (
-		<View>
+		<LinearGradient colors={['rgba(212, 111, 202, 0.0375)', 'rgba(255, 255, 255, 0.75)']}>
 			<GooglePlacesInput handleSearchPress={handleSearchPress} />
-		</View>
+		</LinearGradient>
 	);
 };

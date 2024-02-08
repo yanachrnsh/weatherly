@@ -7,6 +7,8 @@ export const COLORS = {
 	gray: '#f2f2f2',
 	graySecondary: '#ECECEC',
 
+	primaryBackGround: "#D46FCA",
+
 	white: '#FFFFFF',
 	lightWhite: '#FAFAFC',
 };

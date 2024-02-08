@@ -4,9 +4,10 @@ import { useGetWeather } from '@api/search-bar/useGetWeather';
 import { useEffect, useState } from 'react';
 import { temperatureFormatter } from '@utils/temperatureFormatter';
 import tw from 'twrnc';
-import { WeatherInformation } from '@modules/weather/components';
+import { WeatherInformationModel } from '@model/weather-information.model';
 import { COLORS } from '@constants/style.constants';
 import { UnfilledWeather } from './components/unfilled-weather.component';
+import { WeatherInformation } from './components/weather-information.component';
 
 type WeatherParams = {
 	latitude: string;
@@ -16,8 +17,12 @@ type WeatherParams = {
 export const WeatherModule = () => {
 	const { latitude, longitude } = useLocalSearchParams<WeatherParams>();
 
+	const handleButtonBack = () => {
+		router.back();
+	};
+
 	if (!latitude || !longitude) {
-		return <UnfilledWeather />;
+		return <UnfilledWeather handleButtonPress={handleButtonBack} />;
 	}
 
 	const searchedGeoLocation = {
@@ -25,56 +30,63 @@ export const WeatherModule = () => {
 		longitude: parseFloat(longitude),
 	};
 
-	const defaultWeatherData: WeatherInformation = {
+	const defaultWeatherData: WeatherInformationModel = {
 		city: '',
 		weatherDescription: {
 			main: '',
 			description: '',
 			icon: '',
 			id: 0,
+			pressure: 0,
+			visibility: 0,
+			wind: { speed: 0, deg: 0, gust: 0 },
+			rain: { '1h': 0 },
 		},
 		temperature: {
 			temp: 0,
 			feels_like: 0,
 			temp_min: 0,
 			temp_max: 0,
-			pressure: 0,
 		},
 	};
 
-	const { data, isLoading } = useGetWeather(searchedGeoLocation);
+	const { data: weatherResponse, isLoading } = useGetWeather(searchedGeoLocation);
 
-	const [weatherData, setWeatherData] = useState<WeatherInformation>(defaultWeatherData);
+	const [weatherData, setWeatherData] = useState<WeatherInformationModel>(defaultWeatherData);
 
 	useEffect(() => {
-		if (data) {
-			const weatherData: WeatherInformation = {
-				city: data.data.name,
-				weatherDescription: data.data.weather[0],
+		if (weatherResponse) {
+			const weatherData: WeatherInformationModel = {
+				city: weatherResponse.data.name,
+				weatherDescription: {
+					...weatherResponse.data.weather[0],
+					visibility: weatherResponse.data.visibility,
+					wind: weatherResponse.data.wind,
+					rain: weatherResponse.data.rain,
+					pressure: weatherResponse.data.main.pressure,
+				},
 				temperature: {
-					temp: temperatureFormatter(data.data.main.temp),
-					feels_like: temperatureFormatter(data.data.main.feels_like),
-					temp_min: temperatureFormatter(data.data.main.temp_min),
-					temp_max: temperatureFormatter(data.data.main.temp_max),
-					pressure: temperatureFormatter(data.data.main.pressure),
+					temp: temperatureFormatter(weatherResponse.data.main.temp),
+					feels_like: temperatureFormatter(weatherResponse.data.main.feels_like),
+					temp_min: temperatureFormatter(weatherResponse.data.main.temp_min),
+					temp_max: temperatureFormatter(weatherResponse.data.main.temp_max),
 				},
 			};
-
 			setWeatherData(weatherData);
 		}
-	}, [data]);
+	}, [weatherResponse]);
 
 	console.log('weatherData', weatherData);
 
-	if (!data || isLoading) {
-		<View style={tw`flex-1 items-center justify-center`}>
-			<ActivityIndicator size="large" color={COLORS.primary} />
-		</View>;
-	}
-
 	return (
-		<View style={tw`flex-1`}>
-			<WeatherInformation weatherData={weatherData} />
+		<View style={tw`flex-1 p-6`}>
+			{!weatherResponse || isLoading ? (
+				<View style={tw`flex-1 items-center justify-center`}>
+					<ActivityIndicator size="large" color={COLORS.primary} />
+				</View>
+			) : (
+				<WeatherInformation weatherData={weatherData} />
+			)}
 		</View>
 	);
 };

@@ -1,3 +1,4 @@
+import { COLORS } from '@constants/style.constants';
 import { useSearchHistory } from '@context/search-history.provider';
 import { SearchedCity } from '@model/searched-city.model';
 import { SearchHistory, SearchBar } from '@modules/home/components';
@@ -16,7 +17,6 @@ export const HomeModule = () => {
 		const favorite = findFavorite(searchedHistory);
 		setCurrentFavorite(favorite);
 	}, [searchedHistory]);
-
 
 	const handleSearchButton = () => {
 		router.navigate({
@@ -47,8 +47,12 @@ export const HomeModule = () => {
 		}
 	};
 	return (
-		<View style={tw`flex-1`}>
-			<SearchBar prepopulatedSearchedValue={currentFavorite ? currentFavorite.name : ""}  handleInputPress={handleInputPress} handleSearchButton={handleSearchButton}/>
+		<View style={tw`flex-1 `}>
+			<SearchBar
+				prepopulatedSearchedValue={currentFavorite ? currentFavorite.name : ''}
+				handleInputPress={handleInputPress}
+				handleSearchButton={handleSearchButton}
+			/>
 			<SearchHistory handleIconPress={handleFavoriteIconPress} searchedHistory={searchedHistory} currentFavorite={currentFavorite} />
 		</View>
 	);

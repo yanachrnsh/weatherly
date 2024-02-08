@@ -16,13 +16,13 @@ const RootLayout = () => {
 			<QueryClientProvider client={queryClient}>
 				<SearchHistoryProvider>
 					<Stack>
-						<Stack.Screen name="index" options={{ headerTitle: 'Weatherly' }} />
+						<Stack.Screen name="index" options={{ headerTitle: 'Pick location' }} />
 						<Stack.Screen name="search-modal/index" options={{ headerShown: false, presentation: 'modal' }} />
 						<Stack.Screen
 							name="weather/index"
 							options={{
 								headerTitle: 'Weather',
-								headerBackTitle: 'Back',
+								headerBackTitleVisible: false,
 							}}
 						/>
 					</Stack>

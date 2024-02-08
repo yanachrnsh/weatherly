@@ -38,7 +38,7 @@ interface Main {
 	grnd_level: number;
 }
 
-interface Wind {
+export interface Wind {
 	speed: number;
 	deg: number;
 	gust: number;

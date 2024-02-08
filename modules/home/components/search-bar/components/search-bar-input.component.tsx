@@ -12,8 +12,8 @@ export const SearchBarInput: FC<ISearchBarInputProps> = ({ prepopulatedSearchedV
 	return (
 		<View style={tw` flex-3 `}>
 			<TextInput
-				style={tw`h-13 px-2.5 text-base py-0 rounded-xl bg-[${COLORS.gray}]`}
-				placeholder="Chose the City"
+				style={tw`h-13 px-2.5 text-base py-0 rounded-xl bg-[${COLORS.gray}] max-w-[300px] w-full`}
+				placeholder="Search"
 				onPressIn={handlePress}
 				editable={false}
 				selectTextOnFocus={false}
