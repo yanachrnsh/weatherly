@@ -3,6 +3,8 @@ import { useSearchHistory } from '@context/search-history.provider';
 import { SearchedCity } from '@model/searched-city.model';
 import { SearchHistory, SearchBar } from '@modules/home/components';
 import { findFavorite } from '@utils/findFavorite';
+import { sortByDateDesc } from '@utils/sortByDateDesc';
+import { removeDuplicates } from '@utils/removeDuplicates';
 import { useRouter } from 'expo-router';
 import { useState, useEffect } from 'react';
 import { View } from 'react-native';
@@ -46,6 +48,12 @@ export const HomeModule = () => {
 			]);
 		}
 	};
+
+	const sortHistory = (history: SearchedCity[]) => {
+		const historyWithoutDup = removeDuplicates(history);
+		return sortByDateDesc(historyWithoutDup);
+	};
+
 	return (
 		<View style={tw`flex-1 `}>
 			<SearchBar
@@ -53,7 +61,11 @@ export const HomeModule = () => {
 				handleInputPress={handleInputPress}
 				handleSearchButton={handleSearchButton}
 			/>
-			<SearchHistory handleIconPress={handleFavoriteIconPress} searchedHistory={searchedHistory} currentFavorite={currentFavorite} />
+			<SearchHistory
+				handleIconPress={handleFavoriteIconPress}
+				searchedHistory={sortHistory(searchedHistory)}
+				currentFavorite={currentFavorite}
+			/>
 		</View>
 	);
 };

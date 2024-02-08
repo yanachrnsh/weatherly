@@ -18,7 +18,7 @@ export const setColorByWeatherCondition = (condition: string) => {
 };
 
 enum WeatherConditionEnum {
-	CLEAR = 'rgba(242,145,74,1)',
+	CLEAR = 'rgba(50,136,222,1)',
 	CLOUDS = 'rgba(156,157,159,1)',
 	RAIN = 'rgba(90,107,149,1)',
 	DRIZZLE = 'rgba(189,191,192,1)',

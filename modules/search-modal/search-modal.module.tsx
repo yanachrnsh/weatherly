@@ -19,7 +19,7 @@ export const SearchModalModule = () => {
 			favorite: false,
 			name: details.name,
 			id: details.place_id,
-			creationDate: new Date().toISOString(),
+			creationDate: Date.now(),
 		});
 
 		router.back();

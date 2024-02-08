@@ -1,4 +1,4 @@
-import { View } from 'react-native';
+import { View, Text } from 'react-native';
 import { FC } from 'react';
 import { SearchBarInput } from './components/search-bar-input.component';
 import { SearchBarButton } from './components/search-bar-button.component';
@@ -10,15 +10,14 @@ interface SearchBarProps {
 	handleSearchButton: () => void;
 }
 
-export const SearchBar: FC<SearchBarProps> = ({prepopulatedSearchedValue, handleInputPress, handleSearchButton}) => {
-
+export const SearchBar: FC<SearchBarProps> = ({ prepopulatedSearchedValue, handleInputPress, handleSearchButton }) => {
 	return (
-		<View style={tw`flex-row justify-between items-center mt-3 gap-2`} testID="search-bar">
-			<SearchBarInput
-				prepopulatedSearchedValue={prepopulatedSearchedValue}
-				handlePress={handleInputPress}
-			/>
-			<SearchBarButton handlePress={handleSearchButton} />
+		<View>
+			<Text style={tw`pt-6 pb-4 text-xl self-center`}>Pick location</Text>
+			<View style={tw`flex-row justify-between items-center mt-3 gap-2`} testID="search-bar">
+				<SearchBarInput prepopulatedSearchedValue={prepopulatedSearchedValue} handlePress={handleInputPress} />
+				<SearchBarButton handlePress={handleSearchButton} />
+			</View>
 		</View>
 	);
 };

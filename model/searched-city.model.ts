@@ -3,7 +3,7 @@ export interface SearchedCity {
 	favorite: boolean;
 	name: string;
 	id: string;
-	creationDate: string;
+	creationDate: number;
 }
 
 interface SearchedCityLocation {

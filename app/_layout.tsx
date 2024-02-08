@@ -5,10 +5,7 @@ import { SearchHistoryProvider } from '../context/search-history.provider';
 
 const queryClient = new QueryClient();
 
-export const unstable_settings = {
-	// Ensure any route can link back to `/`
-	initialRouteName: 'index',
-};
+export const unstable_settings = { initialRouteName: 'index' };
 
 const RootLayout = () => {
 	return (
@@ -16,7 +13,7 @@ const RootLayout = () => {
 			<QueryClientProvider client={queryClient}>
 				<SearchHistoryProvider>
 					<Stack>
-						<Stack.Screen name="index" options={{ headerTitle: 'Pick location' }} />
+						<Stack.Screen name="index" options={{ headerTitle: 'Pick location', headerShown: false }} />
 						<Stack.Screen name="search-modal/index" options={{ headerShown: false, presentation: 'modal' }} />
 						<Stack.Screen
 							name="weather/index"
