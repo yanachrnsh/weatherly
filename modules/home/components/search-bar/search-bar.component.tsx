@@ -1,45 +1,24 @@
 import { View } from 'react-native';
-import { useEffect, useState, FC } from 'react';
+import { FC } from 'react';
 import { SearchBarInput } from './components/search-bar-input.component';
 import { SearchBarButton } from './components/search-bar-button.component';
 import tw from 'twrnc';
-import { useRouter } from 'expo-router';
-import { useSearchHistory } from '@context/search-history.provider';
-import { SearchedCity } from '@model/searched-city.model';
-import { findFavorite } from '@utils/findFavorite';
 
-export const SearchBar: FC = () => {
-	const [prepopulatedSearchedValue, setPrepopulatedSearchedValue] = useState<SearchedCity | null>(null);
+interface SearchBarProps {
+	prepopulatedSearchedValue: string;
+	handleInputPress: () => void;
+	handleSearchButton: () => void;
+}
 
-	const router = useRouter();
-	const { searchedHistory } = useSearchHistory();
-
-	useEffect(() => {
-		const favorite = findFavorite(searchedHistory);
-		setPrepopulatedSearchedValue(favorite);
-	}, [searchedHistory]);
-
-	const handleSearchPress = () => {
-		router.navigate({
-			pathname: 'weather/',
-			params: {
-				latitude: prepopulatedSearchedValue?.location.latitude,
-				longitude: prepopulatedSearchedValue?.location.longitude,
-			},
-		});
-	};
-
-	const handleInputPress = () => {
-		router.push('/search-modal');
-	};
+export const SearchBar: FC<SearchBarProps> = ({prepopulatedSearchedValue, handleInputPress, handleSearchButton}) => {
 
 	return (
 		<View style={tw`flex-row justify-between items-center mt-3 gap-2`} testID="search-bar">
 			<SearchBarInput
-				prepopulatedSearchedValue={prepopulatedSearchedValue ? prepopulatedSearchedValue.name : null}
+				prepopulatedSearchedValue={prepopulatedSearchedValue}
 				handlePress={handleInputPress}
 			/>
-			<SearchBarButton handlePress={handleSearchPress} />
+			<SearchBarButton handlePress={handleSearchButton} />
 		</View>
 	);
 };

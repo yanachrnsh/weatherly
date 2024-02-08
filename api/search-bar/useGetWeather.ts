@@ -22,7 +22,7 @@ const getWeather = async (cityGeo: CityGeoRequestDto) => {
 
 export const useGetWeather = (cityGeo: CityGeoRequestDto) => {
 	const query = useQuery({
-		queryKey: ['weather'],
+		queryKey: ['weather', `${cityGeo.latitude}-${cityGeo.longitude}`],
 		queryFn: () => getWeather(cityGeo),
 	});
 

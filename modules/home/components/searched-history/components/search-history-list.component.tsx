@@ -7,10 +7,12 @@ import tw from 'twrnc';
 
 interface SearchHistoryItemProps {
 	historyList: SearchedCity[];
-	handleFavoritePress: (favorite: SearchedCity) => void;
+	handleIconPress: (selectedCity: SearchedCity) => void;
+	currentFavorite: SearchedCity | null;
+
 }
 
-export const SearchedHistoryList: FC<SearchHistoryItemProps> = ({ historyList, handleFavoritePress }) => {
+export const SearchedHistoryList: FC<SearchHistoryItemProps> = ({ historyList, handleIconPress, currentFavorite }) => {
 	return (
 		<>
 			<View style={tw`pt-3 flex-row`}>
@@ -19,7 +21,7 @@ export const SearchedHistoryList: FC<SearchHistoryItemProps> = ({ historyList, h
 			</View>
 			<FlatList
 				data={historyList}
-				renderItem={({ item }) => <SearchHistoryItem handleFavoritePress={handleFavoritePress} searchedCity={item} />}
+				renderItem={({ item }) => <SearchHistoryItem handleIconPress={handleIconPress} searchedCity={item} />}
 				keyExtractor={item => item.id}
 			></FlatList>
 		</>

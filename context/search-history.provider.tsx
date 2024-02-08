@@ -15,7 +15,6 @@ const SearchHistoryContext = createContext<SearchHistoryContextProps>({} as Sear
 interface SearchHistoryProviderProps {
 	children: ReactNode;
 }
-type SearchedHistoryStorage = [string, SearchedCity];
 
 export const SearchHistoryProvider = ({ children }: SearchHistoryProviderProps) => {
 	const [searchedHistory, setSearchedHistory] = useState<SearchedCity[]>([]);

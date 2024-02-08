@@ -7,15 +7,15 @@ import { SearchedCity } from '@model/searched-city.model';
 
 interface SearchHistoryItemProps {
 	searchedCity: SearchedCity;
-	handleFavoritePress: (favorite: SearchedCity) => void;
+	handleIconPress: (favorite: SearchedCity) => void;
 }
 
-export const SearchHistoryItem: FC<SearchHistoryItemProps> = ({ searchedCity, handleFavoritePress }) => {
+export const SearchHistoryItem: FC<SearchHistoryItemProps> = ({ searchedCity, handleIconPress }) => {
 	return (
 		<View style={tw`flex-row justify-between w-full items-center border-b-[1px] border-[${COLORS.graySecondary}]`}>
 			<Text style={tw`flex-3 py-3.5 px-2.5`}>{searchedCity.name}</Text>
 			<TouchableOpacity
-				onPress={() => handleFavoritePress(searchedCity)}
+				onPress={() => handleIconPress(searchedCity)}
 				style={tw`flex-1 flex-row items-center justify-center h-full`}
 			>
 				<MaterialIcons name={searchedCity.favorite ? 'favorite' : 'favorite-border'} size={24} color={COLORS.secondary} />

@@ -4,7 +4,7 @@ import tw from 'twrnc';
 import { COLORS } from '@constants/style.constants';
 
 interface ISearchBarInputProps {
-	prepopulatedSearchedValue: string | null;
+	prepopulatedSearchedValue: string;
 	handlePress: () => void;
 }
 
@@ -17,7 +17,7 @@ export const SearchBarInput: FC<ISearchBarInputProps> = ({ prepopulatedSearchedV
 				onPressIn={handlePress}
 				editable={false}
 				selectTextOnFocus={false}
-				value={prepopulatedSearchedValue ? prepopulatedSearchedValue : ''}
+				value={prepopulatedSearchedValue}
 				testID="search-bar-input"
 			/>
 		</View>
