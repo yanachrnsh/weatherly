@@ -8,6 +8,8 @@ import { WeatherInformationModel } from '@model/weather-information.model';
 import { COLORS } from '@constants/style.constants';
 import { UnfilledWeather } from './components/unfilled-weather.component';
 import { WeatherInformation } from './components/weather-information.component';
+import { setColorByWeatherCondition } from '@utils/setColorByWeatherCondition';
+import { LinearGradient } from 'expo-linear-gradient';
 
 type WeatherParams = {
 	latitude: string;
@@ -76,17 +78,21 @@ export const WeatherModule = () => {
 		}
 	}, [weatherResponse]);
 
-	console.log('weatherData', weatherData);
 
 	return (
-		<View style={tw`flex-1 p-6`}>
-			{!weatherResponse || isLoading ? (
-				<View style={tw`flex-1 items-center justify-center`}>
-					<ActivityIndicator size="large" color={COLORS.primary} />
-				</View>
-			) : (
-				<WeatherInformation weatherData={weatherData} />
-			)}
-		</View>
+		<LinearGradient
+			colors={[`${setColorByWeatherCondition(weatherData.weatherDescription.main)}`, 'rgba(255, 255, 255, 0.75)']}
+			style={tw`flex-1 p-6`}
+		>
+			<View style={tw`flex-1`}>
+				{!weatherResponse || isLoading ? (
+					<View style={tw`flex-1 items-center justify-center`}>
+						<ActivityIndicator size="large" color={COLORS.primary} />
+					</View>
+				) : (
+					<WeatherInformation weatherData={weatherData} />
+				)}
+			</View>
+		</LinearGradient>
 	);
 };
