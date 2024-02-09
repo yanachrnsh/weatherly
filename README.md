@@ -1,6 +1,8 @@
 # Weatherly
 Welcome to Weatherly, your go-to app for checking the current weather in your selected city.
 
+![weatherly image](assets/weatherly-preview.gif)
+
 ## Quick Start
 Get started quickly with these simple steps:
 
