@@ -5,7 +5,7 @@ import tw from 'twrnc';
 import { COLORS } from '@constants/style.constants';
 import { UnfilledWeather } from './components/unfilled-weather.component';
 import { WeatherInformation } from './components/weather-information.component';
-import { setColorByWeatherCondition } from '@utils/setColorByWeatherCondition';
+import { getColorByWeatherCondition } from '@utils/getColorByWeatherCondition';
 import { LinearGradient } from 'expo-linear-gradient';
 
 type WeatherParams = {
@@ -41,7 +41,7 @@ export const WeatherModule = () => {
 
 	return (
 		<LinearGradient
-			colors={[`${setColorByWeatherCondition(weatherResponse.weatherDescription.main)}`, 'rgba(255, 255, 255, 0.75)']}
+			colors={[`${getColorByWeatherCondition(weatherResponse.weatherDescription.main)}`, 'rgba(255, 255, 255, 0.75)']}
 			style={tw`flex-1 p-6`}
 		>
 			<View style={tw`flex-1`}>

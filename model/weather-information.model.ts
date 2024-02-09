@@ -33,3 +33,4 @@ interface WeatherTemperature {
 
 export type FilteredWeatherDescription = [string, FilteredWeatherDescriptionValue];
 export type FilteredWeatherDescriptionValue = number | Wind;
+
