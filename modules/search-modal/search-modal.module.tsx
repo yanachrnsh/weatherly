@@ -8,20 +8,22 @@ import { LinearGradient } from 'expo-linear-gradient';
 
 export const SearchModalModule = () => {
 	const router = useRouter();
-	const { setStoredHistory } = useSearchHistory();
+	const { addSearchedCity } = useSearchHistory();
 
 	const handleSearchPress = (details: GooglePlaceDetail) => {
-		setStoredHistory(`${details.place_id}`, {
+		addSearchedCity({
 			location: {
 				latitude: details.geometry.location.lat,
 				longitude: details.geometry.location.lng,
 			},
-			favorite: false,
+			isFavorite: false,
 			name: details.name,
 			id: details.place_id,
 			creationDate: Date.now(),
 		});
 
+		// Back navigation is needed for closing modal view 
+		
 		router.back();
 		router.navigate({
 			pathname: 'weather/',

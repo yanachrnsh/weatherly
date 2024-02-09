@@ -1,4 +1,4 @@
-import {  View, ActivityIndicator } from 'react-native';
+import { View, ActivityIndicator } from 'react-native';
 import { router, useLocalSearchParams } from 'expo-router';
 import { useGetWeather } from '@api/search-bar/useGetWeather';
 import tw from 'twrnc';

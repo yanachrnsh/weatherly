@@ -13,10 +13,10 @@ interface SearchBarProps {
 export const SearchBar: FC<SearchBarProps> = ({ prepopulatedSearchedValue, handleInputPress, handleSearchButton }) => {
 	return (
 		<View>
-			<Text style={tw`pt-6 pb-4 text-xl self-center`}>Pick location</Text>
+			<Text style={tw`pt-8 pb-4 text-xl self-center`}>Pick location</Text>
 			<View style={tw`flex-row justify-between items-center mt-3 gap-2`} testID="search-bar">
 				<SearchBarInput prepopulatedSearchedValue={prepopulatedSearchedValue} handlePress={handleInputPress} />
-				<SearchBarButton handlePress={handleSearchButton} />
+				<SearchBarButton handlePress={handleSearchButton} prepopulatedSearchedValue={prepopulatedSearchedValue} />
 			</View>
 		</View>
 	);

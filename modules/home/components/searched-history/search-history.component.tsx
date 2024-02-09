@@ -7,10 +7,9 @@ import { SearchedHistoryList } from './components/search-history-list.component'
 interface SearchHistoryProps {
 	handleIconPress: (selectedCity: SearchedCity) => void;
 	searchedHistory: SearchedCity[] | null;
-	currentFavorite: SearchedCity | null;
 }
 
-export const SearchHistory:FC<SearchHistoryProps> = ({ handleIconPress, searchedHistory, currentFavorite }) => {
+export const SearchHistory:FC<SearchHistoryProps> = ({ handleIconPress, searchedHistory }) => {
 	return (
 		<View style={tw`flex-1 mt-3 gap-2 justify-center items-center`} testID="search-history-list">
 			{!searchedHistory || searchedHistory.length === 0 ? (
@@ -19,7 +18,6 @@ export const SearchHistory:FC<SearchHistoryProps> = ({ handleIconPress, searched
 				<SearchedHistoryList
 					historyList={searchedHistory}
 					handleIconPress={handleIconPress}
-					currentFavorite={currentFavorite}
 				/>
 			)}
 		</View>

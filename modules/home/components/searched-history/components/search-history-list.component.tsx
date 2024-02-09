@@ -8,10 +8,9 @@ import tw from 'twrnc';
 interface SearchHistoryItemProps {
 	historyList: SearchedCity[];
 	handleIconPress: (selectedCity: SearchedCity) => void;
-	currentFavorite: SearchedCity | null;
 }
 
-export const SearchedHistoryList: FC<SearchHistoryItemProps> = ({ historyList, handleIconPress, currentFavorite }) => {
+export const SearchedHistoryList: FC<SearchHistoryItemProps> = ({ historyList, handleIconPress }) => {
 	return (
 		<>
 			<FlatList
