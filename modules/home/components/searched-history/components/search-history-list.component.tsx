@@ -1,9 +1,9 @@
 import { SearchedCity } from '@model/searched-city.model';
 import { SearchHistoryItem } from './search-history-item.component';
 
-import { View, Text, FlatList } from 'react-native';
+import {  FlatList } from 'react-native';
 import { FC } from 'react';
-import tw from 'twrnc';
+
 
 interface SearchHistoryItemProps {
 	historyList: SearchedCity[];

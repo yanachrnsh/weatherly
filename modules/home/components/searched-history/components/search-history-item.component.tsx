@@ -1,7 +1,6 @@
 import { View, Text, TouchableOpacity } from 'react-native';
 import { FC } from 'react';
 import { MaterialIcons } from '@expo/vector-icons';
-import { COLORS } from '@constants/style.constants';
 import tw from 'twrnc';
 import { SearchedCity } from '@model/searched-city.model';
 import { Link } from 'expo-router';

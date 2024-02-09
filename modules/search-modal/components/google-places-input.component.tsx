@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { GOOGLE_MAPS_API_KEY } from '@env';
 import { GooglePlaceDetail, GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
-import { Alert, View, Text } from 'react-native';
+import { Alert, View } from 'react-native';
 
 interface GooglePlacesInputProps {
 	handleSearchPress: (details: GooglePlaceDetail) => void;

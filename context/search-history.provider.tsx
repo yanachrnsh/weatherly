@@ -4,6 +4,7 @@ import { saveHistory, getHistory } from '@storage/history.storage';
 import { findFavorite } from '@utils/findFavorite';
 import { toggleFavorite } from '@utils/toggleFavorite';
 
+
 interface SearchHistoryContextProps {
 	searchedHistory: SearchedCity[];
 	favorite: SearchedCity | null;
@@ -40,6 +41,7 @@ export const SearchHistoryProvider = ({ children }: SearchHistoryProviderProps) 
 		setSearchedHistory(updatedHistory);
 		saveHistory(updatedHistory);
 	};
+
 
 	const memoValue = useMemo(() => {
 		return {

@@ -1,8 +1,6 @@
-import { View } from 'react-native';
 import { GooglePlacesInput } from './components/google-places-input.component';
-import tw from 'twrnc';
 import { useRouter } from 'expo-router';
-import { GooglePlaceData, GooglePlaceDetail } from 'react-native-google-places-autocomplete';
+import {  GooglePlaceDetail } from 'react-native-google-places-autocomplete';
 import { useSearchHistory } from '@context/search-history.provider';
 import { LinearGradient } from 'expo-linear-gradient';
 
@@ -23,7 +21,7 @@ export const SearchModalModule = () => {
 		});
 
 		// Back navigation is needed for closing modal view 
-		
+
 		router.back();
 		router.navigate({
 			pathname: 'weather/',

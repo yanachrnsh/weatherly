@@ -1,12 +1,10 @@
 import { useSearchHistory } from '@context/search-history.provider';
-import { SearchedCity } from '@model/searched-city.model';
 import { SearchHistory, SearchBar } from '@modules/home/components';
-import { sortByDateDesc } from '@utils/sortByDateDesc';
-import { removeDuplicates } from '@utils/removeDuplicates';
 import { useRouter } from 'expo-router';
 import { View } from 'react-native';
 import tw from 'twrnc';
 import { useCallback } from 'react';
+import { sortHistoryHandler } from '@utils/sortHistoryHandler';
 
 export const HomeModule = () => {
 	const router = useRouter();
@@ -26,13 +24,6 @@ export const HomeModule = () => {
 		router.push('/search-modal');
 	}, []);
 
-	const sortHistory = (history: SearchedCity[]) => {
-		if (!history || history.length === 0) return null;
-
-		const historyWithoutDup = removeDuplicates(history);
-		return sortByDateDesc(historyWithoutDup);
-	};
-
 	return (
 		<View style={tw`flex-1 `}>
 			<SearchBar
@@ -40,7 +31,7 @@ export const HomeModule = () => {
 				handleInputPress={handleInputPress}
 				handleSearchButton={handleSearchFavoriteButton}
 			/>
-			<SearchHistory handleIconPress={toggleFavorite} searchedHistory={sortHistory(searchedHistory)} />
+			<SearchHistory handleIconPress={toggleFavorite} searchedHistory={sortHistoryHandler(searchedHistory)} />
 		</View>
 	);
 };

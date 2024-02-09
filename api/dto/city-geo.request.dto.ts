@@ -1,6 +1,4 @@
-
 export interface CityGeoRequestDto {
-  latitude: number;
-  longitude: number;
+	latitude: number;
+	longitude: number;
 }
-

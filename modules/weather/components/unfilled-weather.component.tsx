@@ -2,7 +2,7 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import { FC } from 'react';
 import tw from 'twrnc';
 import { LinearGradient } from 'expo-linear-gradient';
-import { COLORS } from '@constants/style.constants';
+
 
 interface UnfilledWeatherProps {
 	handleButtonPress: () => void;

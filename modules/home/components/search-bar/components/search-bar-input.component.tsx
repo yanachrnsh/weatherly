@@ -1,4 +1,4 @@
-import { View, TextInput, Pressable, Text } from 'react-native';
+import { View,  Pressable, Text } from 'react-native';
 import { FC } from 'react';
 import tw from 'twrnc';
 import { COLORS } from '@constants/style.constants';

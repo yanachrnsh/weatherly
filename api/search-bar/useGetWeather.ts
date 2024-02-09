@@ -5,20 +5,18 @@ import { CityGeoRequestDto } from '@api/dto/city-geo.request.dto';
 import { WeatherResponseDto } from '@api/dto/weather.response.dto';
 import { WeatherInformationModel } from '@model/weather-information.model';
 import { toWeatherInformationModel } from '@api/transformer/weather.transformer';
+import { api } from '@core/api';
 
 const getWeather = async (cityGeo: CityGeoRequestDto) => {
 	const { latitude, longitude } = cityGeo;
 
 	try {
-		const response = await axios
-			.get<WeatherInformationModel>(
-				`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${WEATHER_API_KEY}`,
-				{
-					transformResponse: response => {
-						return toWeatherInformationModel(JSON.parse(response) as WeatherResponseDto);
-					},
-				}
-			)
+		const response = await api
+			.get<WeatherInformationModel>(`/weather?lat=${latitude}&lon=${longitude}&appid=${WEATHER_API_KEY}`, {
+				transformResponse: response => {
+					return toWeatherInformationModel(JSON.parse(response) as WeatherResponseDto);
+				},
+			})
 			.then(response => response.data);
 
 		return response;
