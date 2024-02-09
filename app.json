@@ -8,25 +8,25 @@
 		"icon": "./assets/icon.png",
 		"userInterfaceStyle": "light",
 		"splash": {
-			"image": "./assets/splash.png",
-			"resizeMode": "contain",
+			"image": "./assets/splash-img.jpeg",
+			"resizeMode": "cover",
 			"backgroundColor": "#ffffff"
 		},
 		"experiments": {
-      "tsconfigPaths": true
-    },
+			"tsconfigPaths": true
+		},
 		"assetBundlePatterns": ["**/*"],
 		"ios": {
 			"supportsTablet": true
 		},
 		"android": {
 			"adaptiveIcon": {
-				"foregroundImage": "./assets/adaptive-icon.png",
+				"foregroundImage": "./assets/cloudy.png",
 				"backgroundColor": "#ffffff"
 			}
 		},
 		"web": {
-			"favicon": "./assets/favicon.png",
+			"favicon": "./assets/cloudy.png",
 			"web": {
 				"bundler": "metro"
 			}

@@ -12,7 +12,7 @@ export const SearchBarButton: FC<ISearchBarButtonProps> = ({ handlePress }) => {
 	return (
 		<View style={tw`flex-1`}>
 			<TouchableOpacity
-				style={tw`justify-center items-center bg-[${COLORS.primary}] rounded-xl py-3.5 px-2.5`}
+				style={tw`justify-center items-center bg-[${COLORS.primary}] rounded-xl py-3.5 px-2.5 max-w-[100px]`}
 				onPress={handlePress}
 				testID="search-bar-button"
 			>
