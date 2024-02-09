@@ -1,26 +1,35 @@
 import { Wind } from '@api/dto/weather.response.dto';
-import { WeatherDescription, WeatherDescriptionEnum, FilteredWeatherDescription } from '@model/weather-information.model';
+import { FilteredWeatherDescription, WeatherDescriptionEnum } from '@model/weather-information.model';
 
-
-export const setupWeatherDescription = (weatherDescription: FilteredWeatherDescription[]): [string, string][] => {
+export const setupWeatherDescription = (weatherDescription: FilteredWeatherDescription[]): Description[] => {
 	return weatherDescription.map(item => mapToWeatherDescription(item));
 };
 
-export const mapToWeatherDescription = (item: FilteredWeatherDescription): [string, string] => {
-	switch (item[0]) {
+export type Description = {
+	name: string;
+	value: string;
+};
+
+export const mapToWeatherDescription = (item: FilteredWeatherDescription): Description => {
+	const descriptionName = item[0];
+	let value = '';
+	switch (descriptionName) {
 		case WeatherDescriptionEnum.WIND:
 			const wind = item[1] as Wind;
-			return [item[0], `${(wind.speed * 3.6).toFixed(1)} km/h`] as [string, string];
+			value = `${(wind.speed * 3.6).toFixed(1)} km/h`;
+			break;
 		case WeatherDescriptionEnum.HUMIDITY:
 			const humidity = item[1] as number;
-			return [item[0], `${Math.trunc(humidity)} %`] as [string, string];
+			value = `${Math.trunc(humidity)} %`;
+			break;
 		case WeatherDescriptionEnum.VISIBILITY:
 			const visibility = item[1] as number;
-			return [item[0], `${(visibility / 1000).toFixed()} km`] as [string, string];
+			value = `${(visibility / 1000).toFixed()} km`;
+			break;
 		case WeatherDescriptionEnum.PRESSURE:
 			const pressure = item[1] as number;
-			return [item[0], `${Math.trunc(pressure)} hPa`] as [string, string];
-		default:
-			return [item[0], ''] as [string, string];
+			value = `${Math.trunc(pressure)} hPa`;
+			break;
 	}
+	return { name: descriptionName, value };
 };

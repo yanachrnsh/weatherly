@@ -10,7 +10,6 @@ export const filterWeatherDescription = (weatherDescription: WeatherDescription)
 	return filteredArray;
 };
 
-type WeatherDescriptionItem = [string, WeatherDescription];
 
 const isSupportedWeather = (weatherKey: string) => {
 	const key = weatherKey.toUpperCase();

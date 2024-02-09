@@ -11,6 +11,7 @@
 			"@constants/*": ["constants/*"],
 			"@model/*": ["model/*"],
 			"@api/*": ["api/*"],
+			"@storage/*": ["storage/*"],
 		},
 	},
 	"extends": "expo/tsconfig.base",

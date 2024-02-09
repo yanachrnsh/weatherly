@@ -1,6 +1,6 @@
 export interface SearchedCity {
 	location: SearchedCityLocation;
-	favorite: boolean;
+	isFavorite: boolean;
 	name: string;
 	id: string;
 	creationDate: number;

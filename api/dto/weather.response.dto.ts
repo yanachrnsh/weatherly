@@ -5,7 +5,7 @@ export interface WeatherResponseDto {
 	main: Main;
 	visibility: number;
 	wind: Wind;
-	rain: Rain;
+	rain?: Rain;
 	clouds: Clouds;
 	dt: number;
 	sys: Sys;
@@ -53,8 +53,8 @@ interface Clouds {
 }
 
 interface Sys {
-	type: number;
-	id: number;
+	type?: number;
+	id?: number;
 	country: string;
 	sunrise: number;
 	sunset: number;

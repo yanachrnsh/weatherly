@@ -2,9 +2,7 @@ import { SearchedCity } from '@model/searched-city.model';
 
 export const findFavorite = (searchedHistory: SearchedCity[] | null) => {
 	if (searchedHistory && searchedHistory.length > 0) {
-		const favorite = searchedHistory.find(item => item.favorite === true);
-		return favorite ? favorite : null;
-	} else {
-		return null;
+		return searchedHistory.find(item => item.isFavorite) || null;
 	}
+	return null;
 };

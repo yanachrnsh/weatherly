@@ -33,7 +33,7 @@ export const WeatherInformation: FC<WeatherInformationProps> = ({ weatherData })
 				{
 					//TODO - Fix the key
 					weatherDescription.map((item, index) => (
-						<WeatherDescriptionItem key={`${index}-${item}`} title={item[0]} text={item[1]} />
+						<WeatherDescriptionItem key={`${index}-${item}`} title={item.name} text={item.value} />
 					))
 				}
 			</View>
